@@ -1,9 +1,6 @@
 from math import radians, cos, sin, sqrt, atan2, degrees
 from dronekit import VehicleMode, Vehicle, LocationGlobalRelative
-from pymavlink import mavutil
 import logging
-import time
-import dronekit
 
 logger = logging.getLogger(__name__)
 

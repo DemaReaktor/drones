@@ -1,5 +1,4 @@
-from math import radians, cos, sin, sqrt, atan2, degrees
-from typing import Tuple
+from math import sqrt, atan2, degrees
 from geopy.distance import distance
 from geopy.point import Point
 

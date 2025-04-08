@@ -1,13 +1,14 @@
 import math
-from dronekit import connect
 from utilites import *
 import logging
+import time
+import dronekit
 
 
 logger = logging.getLogger(__name__)
 
 
-height = 6
+height = 100
 target_geo_location = 50.443326, 30.4480785
 target_location_error = 5
 speed = 10
@@ -24,7 +25,7 @@ logging.basicConfig(level=logging.INFO,
     datefmt="%d %H:%M:%S")
 
 
-drone = connect(connection_string, wait_ready=True)
+drone = dronekit.connect(connection_string, wait_ready=True)
 prepare(drone)
 while drone.location.global_relative_frame.alt < height:
     drone.channels.overrides['3'] = 1800
@@ -52,6 +53,8 @@ while True:
     rotation = get_rotation(drone, target_location)
     if math.fabs(rotation - degrees(drone.attitude.yaw)) > 5:
         rotate(drone, True)
+    else:
+        drone.channels.overrides['4'] = None
     time.sleep(0.2)
 logger.info('vehicle has been arrived')
 drone.channels.overrides['2'] = None
