@@ -53,9 +53,9 @@ def move_to(vehicle: Vehicle, target_location: LocationGlobalRelative, target_lo
     rotation = get_rotation_from_yaw(vehicle, get_rotation(vehicle, target_location))
     while target_distance > target_location_error:
         keep_height(vehicle)
-        vehicle.channels.overrides['4'] = (1500 + int(rotation * 0.6 + (20 if rotation >= 0 else -20))) if (
+        vehicle.channels.overrides['4'] = (1500 + int(rotation * 0.7 + (20 if rotation >= 0 else -20))) if (
             not -rotation_error < rotation < rotation_error) else None
-        vehicle.channels.overrides['2'] = max(1000, 1470 - int(target_distance * 4))
+        vehicle.channels.overrides['2'] = max(1000, 1473 - int(target_distance * 3.5))
         time.sleep(0.1)
         rotation = get_rotation_from_yaw(vehicle, get_rotation(vehicle, target_location))
         target_distance = get_distance_meters(vehicle.location.global_frame, target_location)

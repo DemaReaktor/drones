@@ -6,7 +6,7 @@ import dronekit
 logger = logging.getLogger(__name__)
 
 
-height = 5
+height = 100
 target_geo_location = 50.443326, 30.4480785
 target_location_error = 2
 connection_string = "tcp:127.0.0.1:5762"
